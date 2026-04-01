@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cornerstone Pet Crematorium — Content & Campaign Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --stone: #3d3935;
+    --stone-mid: #6b6560;
+    --stone-light: #a89e96;
+    --sand: #f5f0eb;
+    --sand-mid: #ede6dd;
+    --sand-light: #faf7f4;
+    --sage: #7a9080;
+    --sage-light: #e8eee9;
+    --warm-white: #fefcfa;
+    --rust: #9c5a3c;
+    --rust-light: #f7ede7;
+    --ink: #1e1c1a;
+    --tag-bg: #ede6dd;
+    --tag-text: #5a4f47;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--stone);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--sand-mid);
+    padding: 0 3rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 52px;
+  }
+
+  nav .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--stone);
+    white-space: nowrap;
+    margin-right: auto;
+  }
+
+  nav a {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--stone-mid);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+
+  nav a:hover { color: var(--stone); }
+
+  /* HERO */
+  .hero {
+    background: var(--stone);
+    color: var(--sand);
+    padding: 6rem 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 40%;
+    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.03) 100%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--stone-light);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--stone-light);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 5vw, 3.8rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--sand-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--stone-light);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--stone-light);
+    max-width: 580px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .hero-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone-mid);
+  }
+
+  .hero-meta-item .value {
+    font-size: 13px;
+    color: var(--stone-light);
+  }
+
+  /* CONTENT */
+  main {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 4rem 3rem;
+  }
+
+  section {
+    margin-bottom: 5rem;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--stone-light);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--sand-mid);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--stone);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    color: var(--stone-mid);
+    margin-bottom: 1rem;
+    font-size: 15px;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  .intro-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: var(--sand-light);
+    border: 1px solid var(--sand-mid);
+    border-radius: 8px;
+  }
+
+  /* PAIN POINTS */
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .pain-card {
+    background: var(--rust-light);
+    border: 1px solid #e8cfc5;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .pain-card .pain-icon {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.5rem;
+  }
+
+  .pain-card p {
+    font-size: 13.5px;
+    color: #7a4832;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .pain-card .pain-counter {
+    font-size: 12px;
+    color: var(--stone-light);
+    margin-top: 0.6rem;
+    font-style: normal;
+  }
+
+  /* COUNTER BLOCK */
+  .counter-block {
+    background: var(--sage-light);
+    border: 1px solid #c8d9cc;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .counter-block .counter-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+
+  .counter-block p {
+    font-size: 13.5px;
+    color: #3d6050;
+    margin: 0;
+  }
+
+  /* PILLARS */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .pillar-card {
+    border: 1px solid var(--sand-mid);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .pillar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--sand-mid);
+  }
+
+  .pillar-header.p1 { background: var(--stone); }
+  .pillar-header.p2 { background: var(--sage); }
+  .pillar-header.p3 { background: #7a6e5a; }
+
+  .pillar-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1;
+    color: rgba(255,255,255,0.2);
+    margin-bottom: 0.25rem;
+  }
+
+  .pillar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.95);
+    line-height: 1.25;
+  }
+
+  .pillar-body {
+    padding: 1.25rem 1.5rem;
+    background: var(--warm-white);
+  }
+
+  .pillar-body .pillar-desc {
+    font-size: 13px;
+    color: var(--stone-mid);
+    margin-bottom: 1rem;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 11px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  /* CONTENT IDEAS TABLE */
+  .content-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 13.5px;
+  }
+
+  .content-table thead th {
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone-light);
+    padding: 0 1rem 0.75rem 0;
+    border-bottom: 1px solid var(--sand-mid);
+    font-weight: 400;
+  }
+
+  .content-table tbody tr {
+    border-bottom: 1px solid var(--sand-mid);
+    transition: background 0.1s;
+  }
+
+  .content-table tbody tr:hover {
+    background: var(--sand-light);
+  }
+
+  .content-table tbody td {
+    padding: 0.9rem 1rem 0.9rem 0;
+    color: var(--stone-mid);
+    vertical-align: top;
+  }
+
+  .content-table tbody td:first-child {
+    font-weight: 500;
+    color: var(--stone);
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+
+  .badge-pillar1 { background: #e8e5e2; color: var(--stone); }
+  .badge-pillar2 { background: var(--sage-light); color: #3d6050; }
+  .badge-pillar3 { background: #ede8e2; color: #5a4a35; }
+  .badge-organic { background: #e9f0ea; color: #3a5e40; }
+  .badge-paid { background: #f7ede7; color: #7a3a20; }
+  .badge-both { background: #e8eaf7; color: #3a4070; }
+
+  /* Q&A SECTION */
+  .qa-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .qa-card {
+    border: 1px solid var(--sand-mid);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .qa-q {
+    background: var(--sand-mid);
+    padding: 0.9rem 1.2rem;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--stone);
+    font-style: italic;
+  }
+
+  .qa-a {
+    padding: 0.9rem 1.2rem;
+    font-size: 13px;
+    color: var(--stone-mid);
+    background: var(--warm-white);
+  }
+
+  /* META ADS */
+  .ads-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .ad-card {
+    border: 1px solid var(--sand-mid);
+    border-radius: 10px;
+    padding: 1.5rem;
+    background: var(--warm-white);
+  }
+
+  .ad-card .ad-type {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone-light);
+    margin-bottom: 0.6rem;
+  }
+
+  .ad-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--stone);
+    margin-bottom: 0.5rem;
+  }
+
+  .ad-card p {
+    font-size: 13px;
+  }
+
+  .ad-card .ad-spec {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--sand-mid);
+    font-size: 12px;
+    color: var(--stone-light);
+  }
+
+  /* MEDIA DAY */
+  .media-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .media-block {
+    background: var(--sand-light);
+    border: 1px solid var(--sand-mid);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .media-block h3 {
+    font-size: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .shot-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .shot-list li {
+    font-size: 13px;
+    color: var(--stone-mid);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .shot-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--stone-light);
+  }
+
+  /* TONE */
+  .tone-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .tone-card {
+    padding: 1.25rem;
+    border: 1px solid var(--sand-mid);
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .tone-card .tone-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--stone);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .tone-card p {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  /* COMPETITOR NOTE */
+  .competitor-callout {
+    background: var(--stone);
+    color: var(--sand);
+    border-radius: 10px;
+    padding: 2rem 2.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .competitor-callout h3 {
+    color: var(--stone-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .competitor-callout p {
+    color: var(--stone-light);
+    font-size: 14px;
+  }
+
+  .competitor-callout ul {
+    margin-top: 1rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .competitor-callout ul li {
+    font-size: 13.5px;
+    color: rgba(245,240,235,0.8);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .competitor-callout ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--sage);
+  }
+
+  /* CALENDAR GRID */
+  .cal-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--sand-mid);
+  }
+
+  .cal-row:first-child { border-radius: 8px 8px 0 0; }
+  .cal-row:last-child { border-radius: 0 0 8px 8px; }
+
+  .cal-cell {
+    background: var(--warm-white);
+    padding: 0.75rem 1rem;
+    font-size: 12px;
+  }
+
+  .cal-header .cal-cell {
+    background: var(--stone);
+    color: var(--sand-light);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .cal-cell.week {
+    color: var(--stone-light);
+    font-size: 11px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+
+  .cal-item {
+    color: var(--stone-mid);
+  }
+
+  .cal-item strong {
+    display: block;
+    color: var(--stone);
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+
+  .cal-wrapper {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+    border: 1px solid var(--sand-mid);
+  }
+
+  /* DIVIDER */
+  hr {
+    border: none;
+    border-top: 1px solid var(--sand-mid);
+    margin: 3rem 0;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--stone);
+    padding: 3rem;
+    text-align: center;
+    color: var(--stone-mid);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+
+  footer .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--sand-light);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 680px) {
+    nav { padding: 0 1.5rem; gap: 1rem; }
+    nav a { display: none; }
+    .hero { padding: 4rem 1.5rem 3rem; }
+    main { padding: 3rem 1.5rem; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .qa-grid { grid-template-columns: 1fr; }
+    .ads-grid { grid-template-columns: 1fr; }
+    .media-grid { grid-template-columns: 1fr; }
+    .tone-grid { grid-template-columns: 1fr 1fr; }
+    .intro-block { grid-template-columns: 1fr; }
+    .cal-row { grid-template-columns: 60px 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="brand">Cornerstone Pet Crematorium — Strategy</span>
+  <a href="#insights">Insights</a>
+  <a href="#pillars">Pillars</a>
+  <a href="#content">Content</a>
+  <a href="#media">Media Day</a>
+  <a href="#ads">Meta Ads</a>
+  <a href="#calendar">Calendar</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <p class="hero-tag">Broad Collective — Digital Strategy</p>
+    <h1>Content & Campaign Strategy<br><em>Cornerstone Pet Crematorium</em></h1>
+    <p class="hero-sub">A trust-first content approach built around Tasmania's only private pet cremation service — positioning Cornerstone as the clear, compassionate choice before a competitor arrives.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Business</span>
+        <span class="value">Cornerstone Pet Crematorium, Launceston TAS</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Channels</span>
+        <span class="value">Instagram, Facebook, TikTok, Meta Ads</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Approach</span>
+        <span class="value">3 Content Pillars + Q&A Series + Media Day</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Strategic Priority</span>
+        <span class="value">Build brand equity before the competitor launches</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- OVERVIEW -->
+  <section id="overview">
+    <p class="section-label">Context</p>
+    <h2>The opportunity</h2>
+    <p>Cornerstone occupies a rare position: a privately-owned, Tasmanian-operated crematorium offering fully individual (private) cremation with tracked end-to-end journeys. This is not just a service distinction — it is the antidote to the biggest fears grieving pet owners have. The strategy below turns that trust advantage into content that builds community, answers the hard questions, and establishes Cornerstone as the default choice in Tasmania before any competitor can.</p>
+    <div class="intro-block">
+      <div>
+        <h3>Core differentiators to build from</h3>
+        <p>Only private cremation offered — never bulk or communal. Every pet's journey is individually tracked through the WingsTracker system. Tasmanian owned and operated. Connected to a boarding facility — a genuine full lifecycle relationship with pets and their families.</p>
+      </div>
+      <div>
+        <h3>Strategic timing</h3>
+        <p>A competitor is coming. This is the window to own the emotional territory — the reviews, the recognisable faces, the trust signals — so that when families in Tasmania search for pet cremation, Cornerstone is already the obvious, familiar, trusted answer. Content created now becomes the moat.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section id="insights">
+    <p class="section-label">Competitive Research</p>
+    <h2>What grieving pet owners fear most</h2>
+    <p>Research across Australian and international pet cremation reviews, Reddit communities, and consumer trust sites reveals consistent, emotionally charged pain points. These are not edge cases — they are recurring concerns that shape every purchase decision in this category.</p>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <p class="pain-icon">Pain point 01 — Trust in the ashes</p>
+        <p>"How do I know I'm getting my pet's ashes back and not a bag of mixed remains from other animals?"</p>
+        <p class="pain-counter">The single most common fear across every forum, review site, and pet loss community surveyed.</p>
+      </div>
+      <div class="pain-card">
+        <p class="pain-icon">Pain point 02 — Lack of communication</p>
+        <p>"We called repeatedly and nobody answered. The vet called them, nobody called us. We had no idea where our dog was."</p>
+        <p class="pain-counter">Unresponsive providers are a top complaint across Australian and UK cremation reviews.</p>
+      </div>
+      <div class="pain-card">
+        <p class="pain-icon">Pain point 03 — Cold, transactional handling</p>
+        <p>"Our pet was handed over like a frozen turkey. No empathy. No acknowledgement that this was our family member."</p>
+        <p class="pain-counter">Compassion failure at the point of handover is a recurring source of lasting distress.</p>
+      </div>
+      <div class="pain-card">
+        <p class="pain-icon">Pain point 04 — Hidden fees / price shock</p>
+        <p>"The vet gave us a pamphlet with no pricing, no turnaround time, no extras explained. We had no idea what we were agreeing to."</p>
+        <p class="pain-counter">Opacity around pricing and timelines erodes trust at the most vulnerable moment.</p>
+      </div>
+      <div class="pain-card">
+        <p class="pain-icon">Pain point 05 — Not knowing the difference</p>
+        <p>"I didn't know there was a difference between private, individual and communal cremation until it was too late to change my mind."</p>
+        <p class="pain-counter">Education is a content opportunity — most owners are making this decision for the first time.</p>
+      </div>
+      <div class="pain-card">
+        <p class="pain-icon">Pain point 06 — Vet as gatekeeper</p>
+        <p>"The vet just told us which crematorium to use. We had no idea we could choose for ourselves or that alternatives existed."</p>
+        <p class="pain-counter">Many Tasmanian pet owners don't know Cornerstone exists as a direct, independent option.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 1.5rem;">
+      <p class="section-label" style="margin-top: 0.5rem;">How Cornerstone answers each pain point</p>
+      <div class="counter-block">
+        <p class="counter-label">Trust in ashes</p>
+        <p>Private-only cremation with WingsTracker end-to-end journey tracking. No communal option means no ambiguity — ever. This is not just policy, it's content: show the tracking system, explain it, film it.</p>
+      </div>
+      <div class="counter-block" style="margin-top: 0.75rem;">
+        <p class="counter-label">Communication</p>
+        <p>Content should consistently reinforce responsiveness — response time claims in captions, BTS of how the team handles calls, direct DM availability. Show, don't just tell.</p>
+      </div>
+      <div class="counter-block" style="margin-top: 0.75rem;">
+        <p class="counter-label">Compassion in handling</p>
+        <p>Media day content showing the care taken — how pets are handled, the facility environment, the people behind the service — is the visual proof that no competitor can instantly replicate.</p>
+      </div>
+      <div class="counter-block" style="margin-top: 0.75rem;">
+        <p class="counter-label">Pricing and process transparency</p>
+        <p>Publish clear content explaining the process, timeline, and pricing range. Families who arrive informed feel respected. This is a differentiator in a category notorious for opacity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section id="pillars">
+    <p class="section-label">Strategy</p>
+    <h2>Three content pillars</h2>
+    <p>Every piece of content — organic, paid, or Q&A — should live under one of these three pillars. They are designed to be emotionally relevant, differentiation-forward, and built around what the audience is already searching for and feeling.</p>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-header p1">
+          <div class="pillar-number">01</div>
+          <div class="pillar-title">Trust &amp; Transparency</div>
+        </div>
+        <div class="pillar-body">
+          <p class="pillar-desc">Every fear a pet owner has — we answer it here. This pillar makes Cornerstone the most educated, honest voice in the category before anyone else tries to fill that space. Educational, factual, and reassuring in tone.</p>
+          <div class="tag-list">
+            <span class="tag">How private cremation works</span>
+            <span class="tag">Journey tracking explainers</span>
+            <span class="tag">Ashes FAQ</span>
+            <span class="tag">Behind the facility</span>
+            <span class="tag">What makes us different</span>
+            <span class="tag">Timing &amp; process</span>
+            <span class="tag">Pricing transparency</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-header p2">
+          <div class="pillar-number">02</div>
+          <div class="pillar-title">Grief &amp; Celebration</div>
+        </div>
+        <div class="pillar-body">
+          <p class="pillar-desc">Pet loss is grief. Meeting people in that moment — with warmth, not marketing language — builds loyalty that no competitor can buy. This pillar also celebrates life, not just loss, through memorials, urns, and keepsakes.</p>
+          <div class="tag-list">
+            <span class="tag">Pet tributes</span>
+            <span class="tag">Grief support content</span>
+            <span class="tag">Memento features</span>
+            <span class="tag">Urn showcases</span>
+            <span class="tag">Rainbow Bridge moments</span>
+            <span class="tag">Helping kids with pet loss</span>
+            <span class="tag">When to say goodbye</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-header p3">
+          <div class="pillar-number">03</div>
+          <div class="pillar-title">Local &amp; Alive</div>
+        </div>
+        <div class="pillar-body">
+          <p class="pillar-desc">Tasmanian. Local. Real people. This pillar counters the cold, corporate, interstate feel of any future competitor before they arrive. It builds community equity and makes Cornerstone feel like a neighbour, not a business.</p>
+          <div class="tag-list">
+            <span class="tag">Team introductions</span>
+            <span class="tag">Behind the scenes</span>
+            <span class="tag">Tasmanian pet community</span>
+            <span class="tag">Vet partner spotlights</span>
+            <span class="tag">Local pet rescues &amp; shelters</span>
+            <span class="tag">Pet owner spotlights</span>
+            <span class="tag">Seasons &amp; Tassie lifestyle</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT IDEAS -->
+  <section id="content">
+    <p class="section-label">Content Plan</p>
+    <h2>Content ideas by pillar</h2>
+    <p>A mix of organic social, short-form video, and Meta ad-ready content. Formats are specified for the channel most suited to each piece. All content for the crematorium stands alone — no crossover with the boarding facility unless separately briefed.</p>
+
+    <table class="content-table">
+      <thead>
+        <tr>
+          <th>Content piece</th>
+          <th>Pillar</th>
+          <th>Format</th>
+          <th>Channel</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"What actually happens when you choose private cremation" — a step-by-step explainer</td>
+          <td><span class="badge badge-pillar1">Trust</span></td>
+          <td>Carousel or Reel</td>
+          <td><span class="badge badge-both">Both</span></td>
+          <td>Use real facility footage from media day. Addresses #1 fear.</td>
+        </tr>
+        <tr>
+          <td>WingsTracker walkthrough — "Here's exactly how we track your pet's journey"</td>
+          <td><span class="badge badge-pillar1">Trust</span></td>
+          <td>Reel / TikTok</td>
+          <td><span class="badge badge-organic">Organic</span></td>
+          <td>Screen record or over-shoulder footage of the tracker portal. Very shareable.</td>
+        </tr>
+        <tr>
+          <td>"Private vs communal cremation — what's the actual difference?"</td>
+          <td><span class="badge badge-pillar1">Trust</span></td>
+          <td>Static graphic or Reel</td>
+          <td><span class="badge badge-both">Both</span></td>
+          <td>Directly addresses the #1 misconception. Strong ad candidate.</td>
+        </tr>
+        <tr>
+          <td>"Will I really get my pet's ashes back?" — honest, direct answer</td>
+          <td><span class="badge badge-pillar1">Trust</span></td>
+          <td>Talking-head Reel</td>
+          <td><span class="badge badge-both">Both</span></td>
+          <td>Owner or staff speaks directly to camera. Disarms the biggest fear in the industry.</td>
+        </tr>
+        <tr>
+          <td>Facility tour — clean, warm, no clinical sterility</td>
+          <td><span class="badge badge-pillar1">Trust</span></td>
+          <td>Reel / TikTok</td>
+          <td><span class="badge badge-organic">Organic</span></td>
+          <td>Key media day shot. Shows families the space before they need it.</td>
+        </tr>
+        <tr>
+          <td>"What to do when your pet passes — a gentle guide for the next 24 hours"</td>
+          <td><span class="badge badge-pillar2">Grief</span></td>
+          <td>Blog / Story / Carousel</td>
+          <td><span class="badge badge-organic">Organic</span></td>
+          <td>SEO-strong. Meets people in the hardest moment with clarity.</td>
+        </tr>
+        <tr>
+          <td>Monthly "Rainbow Bridge" tribute post — pet families submit photos + names</td>
+          <td><span class="badge badge-pillar2">Grief</span></td>
+          <td>Feed post (recurring)</td>
+          <td><span class="badge badge-organic">Organic</span></td>
+          <td>Community-building. Drives UGC and emotional engagement. Highly shareable.</td>
+        </tr>
+        <tr>
+          <td>Urn and keepsake showcase — "ways to keep them close"</td>
+          <td><span class="badge badge-pillar2">Grief</span></td>
+          <td>Carousel / Reel</td>
+          <td><span class="badge badge-both">Both</span></td>
+          <td>Styled product photography from media day. High-intent — drives to shop page.</td>
+        </tr>
+        <tr>
+          <td>"Helping children understand the loss of a pet" — expert-style content</td>
+          <td><span class="badge badge-pillar2">Grief</span></td>
+          <td>Carousel / Blog</td>
+          <td><span class="badge badge-organic">Organic</span></td>
+          <td>Highly shareable with parents. Builds authority beyond just cremation.</td>
+        </tr>
+        <tr>
+          <td>"Signs your senior pet may be nearing end of life" — gentle, informative</td>
+          <td><span class="badge badge-pillar2">Grief</span></td>
+          <td>Blog / Carousel</td>
+          <td><span class="badge badge-paid">Paid</span></td>
+          <td>High-intent audience. Strong remarketing ad — meet people before they need you.</td>
+        </tr>
+        <tr>
+          <td>Team introduction Reels — the people who care for your pet</td>
+          <td><span class="badge badge-pillar3">Local</span></td>
+          <td>Reel / TikTok</td>
+          <td><span class="badge badge-organic">Organic</span></td>
+          <td>Humanises the business. Shot on media day. Series format works well.</td>
+        </tr>
+        <tr>
+          <td>"Why we only do private cremation" — owner to camera, unscripted</td>
+          <td><span class="badge badge-pillar3">Local</span></td>
+          <td>Reel / TikTok</td>
+          <td><span class="badge badge-both">Both</span></td>
+          <td>Values-led content. Differentiates immediately. Strong paid ad if hooks land.</td>
+        </tr>
+        <tr>
+          <td>Tasmanian pet community spotlights — local rescues, shelters, vets</td>
+          <td><span class="badge badge-pillar3">Local</span></td>
+          <td>Feed post / Story</td>
+          <td><span class="badge badge-organic">Organic</span></td>
+          <td>Builds referral relationships and community trust simultaneously.</td>
+        </tr>
+        <tr>
+          <td>"We've been there for Tasmanian pets from day one" — lifecycle storytelling</td>
+          <td><span class="badge badge-pillar3">Local</span></td>
+          <td>Brand Reel / Ad</td>
+          <td><span class="badge badge-both">Both</span></td>
+          <td>Lean into the boarding-to-cremation lifecycle gently. One brand narrative, two businesses.</td>
+        </tr>
+        <tr>
+          <td>Pre-planning content — "Have the conversation before you need to"</td>
+          <td><span class="badge badge-pillar1">Trust</span></td>
+          <td>Blog / Carousel</td>
+          <td><span class="badge badge-paid">Paid</span></td>
+          <td>Unique angle in AU market. Targets pet owners with senior animals. Low urgency, high value.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Q&A SERIES -->
+  <section id="qa">
+    <p class="section-label">Content Series</p>
+    <h2>Q&A content series — "Ask Cornerstone"</h2>
+    <p>Drawn directly from the pain points uncovered in competitor reviews. This series is the single most effective way to dominate search and convert hesitant pet owners. Each post answers one real question — directly, warmly, and without jargon. Run as short-form video (talking head or voiceover), Reels, or carousel slides. Can be boosted as paid content when performance indicates resonance.</p>
+
+    <div class="qa-grid">
+      <div class="qa-card">
+        <div class="qa-q">"Are the ashes I receive really my pet's?"</div>
+        <div class="qa-a">Yes — because we only ever cremate one pet at a time. There is no communal option at Cornerstone. Your pet goes in alone, comes out alone, and is tracked every step of the way with WingsTracker.</div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-q">"How long does the cremation take, and when will I get the ashes?"</div>
+        <div class="qa-a">Walk them through the realistic timeline, set expectations clearly, and explain what happens between drop-off and return. Families who know what to expect feel far less anxious.</div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-q">"Do I have to go through my vet, or can I contact you directly?"</div>
+        <div class="qa-a">You can contact Cornerstone directly — you don't need your vet as a middleman. Explain both pathways: direct booking and vet-referred, and that the family's wishes come first either way.</div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-q">"Can I bring my pet to you myself?"</div>
+        <div class="qa-a">Yes. Walk through the collection and drop-off options. Many families want to personally deliver their pet — this content meets that need and removes uncertainty.</div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-q">"Can I be present or witness the cremation?"</div>
+        <div class="qa-a">Answer honestly. If Cornerstone offers this, feature it. If not, explain why private cremation and tracking provides equivalent peace of mind. Transparency here is the point.</div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-q">"What happens to the collar, blanket, or toys my pet was with?"</div>
+        <div class="qa-a">A common and emotionally loaded question. Address what is and isn't returned and why — gently and specifically. This shows families their pet was treated as an individual.</div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-q">"Is Cornerstone a Tasmanian business?"</div>
+        <div class="qa-a">Yes — owned and operated right here in Tasmania. Not a franchise, not an interstate company with a local depot. This matters enormously in Tasmania. Lean into it.</div>
+      </div>
+      <div class="qa-card">
+        <div class="qa-q">"What's the difference between private and individual cremation?"</div>
+        <div class="qa-a">These terms are used interchangeably elsewhere and it creates confusion. Cornerstone can own the education here — explain the spectrum clearly and state that Cornerstone only offers fully private cremation.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA DAY -->
+  <section id="media">
+    <p class="section-label">Production</p>
+    <h2>Media day shot list — Crematorium</h2>
+    <p>The boarding facility should be treated as a separate media day with a separate brief. The below is focused entirely on Cornerstone Pet Crematorium. The goal is to capture enough content to populate 8–12 weeks of organic posts plus ad creative at a single shoot.</p>
+
+    <div class="media-grid">
+      <div class="media-block">
+        <h3>Facility &amp; environment</h3>
+        <ul class="shot-list">
+          <li>Exterior building — clean, natural light, no harsh shadows</li>
+          <li>Reception or entry area — warm, human, not clinical</li>
+          <li>Waiting/consultation space if available</li>
+          <li>Wide angle of facility interior (clean composition)</li>
+          <li>Signage and branding elements</li>
+          <li>Hands placing or handling equipment (no graphic content)</li>
+          <li>Paw print wall, memory shelf, or any tribute space</li>
+        </ul>
+      </div>
+      <div class="media-block">
+        <h3>Team &amp; human moments</h3>
+        <ul class="shot-list">
+          <li>Individual portraits — natural, approachable, not corporate</li>
+          <li>Team members speaking to camera (hook-led Reels)</li>
+          <li>Behind-the-scenes of day-to-day care routines</li>
+          <li>Someone handling an urn or keepsake with visible care</li>
+          <li>Phone call or reception moment — warmth in customer interaction</li>
+          <li>Owner or founder talking about "why we only do private"</li>
+        </ul>
+      </div>
+      <div class="media-block">
+        <h3>Product &amp; keepsakes</h3>
+        <ul class="shot-list">
+          <li>Full urn range — flat lay, styled, with natural props</li>
+          <li>Mementos and keepsakes — paw prints, fur clippings, memorial jewellery</li>
+          <li>Close-up detail shots for product carousels</li>
+          <li>Packaging — how the pet is returned to the family</li>
+          <li>Lifestyle shot — urn in a home setting (stylised)</li>
+        </ul>
+      </div>
+      <div class="media-block">
+        <h3>Tracker &amp; process</h3>
+        <ul class="shot-list">
+          <li>Screen capture or over-shoulder of WingsTracker login for pet families</li>
+          <li>ID tag or tracking identifier on a bag/container (clinical but important)</li>
+          <li>Visual representation of the journey steps (could be a graphic or physical process)</li>
+          <li>Certificate of private cremation — styled close-up</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top: 1.5rem; font-size: 13px; color: var(--stone-light);">Note: No graphic content from the cremation process itself is needed or appropriate for social use. The story is in the care, the people, and the dignity — not the mechanics.</p>
+  </section>
+
+  <!-- TONE -->
+  <section id="tone">
+    <p class="section-label">Brand Voice</p>
+    <h2>Tone &amp; voice guide</h2>
+    <p>Cornerstone communicates like a compassionate Tasmanian neighbour, not a service provider. The voice is warm, plain-spoken, and honest. It does not over-promise or lean into saccharine grief language. It is not corporate, clinical, or salesy.</p>
+
+    <div class="tone-grid">
+      <div class="tone-card">
+        <span class="tone-word">Warm</span>
+        <p>Acknowledges grief without performing it. Empathy that feels real, not scripted.</p>
+      </div>
+      <div class="tone-card">
+        <span class="tone-word">Honest</span>
+        <p>Answers hard questions directly. No hiding behind euphemism or opacity.</p>
+      </div>
+      <div class="tone-card">
+        <span class="tone-word">Grounded</span>
+        <p>Tasmanian. Local. Real people. Not a national chain with a helpdesk.</p>
+      </div>
+      <div class="tone-card">
+        <span class="tone-word">Calm</span>
+        <p>Never urgent, never pushy. This is a decision made in grief — the brand supports, not sells.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 1.5rem; padding: 1.5rem; border: 1px solid var(--sand-mid); border-radius: 8px; background: var(--sand-light);">
+      <h3 style="margin-bottom: 0.75rem;">Caption examples — do &amp; don't</h3>
+      <p style="font-size: 13px; color: var(--sage); font-weight: 500;">Do: "Saying goodbye is the hardest part of loving a pet. When you're ready, we're here — and we'll take care of everything, step by step."</p>
+      <p style="font-size: 13px; color: var(--rust); margin-top: 0.5rem; font-weight: 500;">Don't: "Your beloved fur baby deserves only the best in their final journey! Contact us today! 🐾❤️"</p>
+      <p style="font-size: 13px; color: var(--stone-light); margin-top: 0.75rem;">The difference: warmth without performance. No forced emotion, no excessive punctuation, no infantilising language. Trust is built through restraint.</p>
+    </div>
+  </section>
+
+  <!-- META ADS -->
+  <section id="ads">
+    <p class="section-label">Paid Media</p>
+    <h2>Meta ad campaign strategy</h2>
+    <p>Three distinct campaign objectives, each targeting a different stage of awareness. The crematorium runs its own Meta account and campaigns — separate from any boarding facility activity unless a broader brand campaign is later agreed.</p>
+
+    <div class="ads-grid">
+      <div class="ad-card">
+        <p class="ad-type">Campaign 01 — Awareness</p>
+        <h4>Pre-need education</h4>
+        <p>Target Tasmanian pet owners before they face loss. Content about senior pets, end-of-life planning, and the difference between cremation options. The goal is brand recognition before they need the service.</p>
+        <div class="ad-spec">
+          <strong>Targeting:</strong> Tasmania | Pet owners | 30–65+ | Interest: pets, animals, veterinary<br>
+          <strong>Formats:</strong> Reel + Carousel<br>
+          <strong>Objective:</strong> Reach / Brand awareness<br>
+          <strong>Creative:</strong> "Signs your senior pet may be nearing end of life" — soft educational content
+        </div>
+      </div>
+      <div class="ad-card">
+        <p class="ad-type">Campaign 02 — Consideration</p>
+        <h4>Trust &amp; differentiation</h4>
+        <p>Direct-to-consumer ads that answer the biggest fears head-on. "Why we only do private cremation." "Will you actually get your pet's ashes back?" These ads target people actively researching options.</p>
+        <div class="ad-spec">
+          <strong>Targeting:</strong> Tasmania | Broader pet audience + website visitors<br>
+          <strong>Formats:</strong> Talking-head Reel, Carousel explainer<br>
+          <strong>Objective:</strong> Traffic to website / Video views<br>
+          <strong>Creative:</strong> Q&A format — direct, honest, no fluff
+        </div>
+      </div>
+      <div class="ad-card">
+        <p class="ad-type">Campaign 03 — Conversion</p>
+        <h4>In-need families</h4>
+        <p>Retargeting site visitors and people who have engaged with awareness content. Gentle, non-pressured. "When you're ready, we're here." Clear call to action: call, enquire, or learn more about the process.</p>
+        <div class="ad-spec">
+          <strong>Targeting:</strong> Retargeting — site visitors, video viewers, page engagers<br>
+          <strong>Formats:</strong> Static image, short Reel<br>
+          <strong>Objective:</strong> Messages / Lead generation<br>
+          <strong>Creative:</strong> Facility imagery + simple, warm copy. No urgency language.
+        </div>
+      </div>
+      <div class="ad-card">
+        <p class="ad-type">Campaign 04 — Vet referral pipeline</p>
+        <h4>B2B — vet clinic audience</h4>
+        <p>Many pet owners first hear about cremation options from their vet. Cornerstone should be the name vets in Tasmania think of. A small spend targeting veterinary professionals and clinic administrators in TAS can build this pipeline significantly.</p>
+        <div class="ad-spec">
+          <strong>Targeting:</strong> Tasmania | Job title: veterinarian, vet nurse, vet clinic manager<br>
+          <strong>Formats:</strong> Static image, simple explainer carousel<br>
+          <strong>Objective:</strong> Awareness / Lead generation<br>
+          <strong>Creative:</strong> Professional tone. Focus on the tracking system and private-only offering.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETITOR -->
+  <section id="competitor">
+    <p class="section-label">Competitive Positioning</p>
+    <h2>Before the competitor arrives</h2>
+    <div class="competitor-callout">
+      <h3>Moat-building actions — do these now</h3>
+      <p>The window to own this category in Tasmania is open but will close. The following are high-priority actions to take before any competitor launches:</p>
+      <ul>
+        <li>Claim and fully optimise the Google Business Profile with photos from media day, services listed, Q&A section populated, and a review generation strategy in place</li>
+        <li>Publish a minimum of 8–10 SEO-targeted blog posts covering the key questions Tasmanians are searching for — "pet cremation Tasmania", "private pet cremation Launceston" etc.</li>
+        <li>Build a review base of 20+ genuine Google reviews before any competitor launches — reviews are the single most influential trust signal in this category</li>
+        <li>Establish vet relationships formally — consider a referral program, printed leave-behind cards for reception areas, and a personal intro visit to Launceston and Hobart clinics</li>
+        <li>Run the awareness Meta campaign now — brand recognition takes time and the investment compounds with every week of presence ahead of a competitor</li>
+        <li>Create the "Rainbow Bridge" community ritual early — monthly tribute posts build an emotional community that a new competitor cannot replicate overnight</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CALENDAR -->
+  <section id="calendar">
+    <p class="section-label">Execution</p>
+    <h2>Sample 4-week content calendar</h2>
+    <p>A suggested rhythm for the first month post media day. Posting 4–5 times per week across Instagram and Facebook, with TikTok as a secondary channel for Reel content. Adjust based on capacity and community growth.</p>
+
+    <div class="cal-wrapper">
+      <div class="cal-row cal-header">
+        <div class="cal-cell">Week</div>
+        <div class="cal-cell">Instagram / Facebook</div>
+        <div class="cal-cell">Reel / TikTok</div>
+        <div class="cal-cell">Meta Ad</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell week">Week 1</div>
+        <div class="cal-cell cal-item"><strong>Team introduction series</strong>Meet the people behind Cornerstone — 3 staff profiles</div>
+        <div class="cal-cell cal-item"><strong>Facility tour Reel</strong>"Here's where your pet will be cared for"</div>
+        <div class="cal-cell cal-item"><strong>Awareness campaign launches</strong>Senior pet education creative</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell week">Week 2</div>
+        <div class="cal-cell cal-item"><strong>Q&A: "Are the ashes really my pet's?"</strong>Carousel with honest, direct copy</div>
+        <div class="cal-cell cal-item"><strong>WingsTracker explainer</strong>"How we track your pet's journey"</div>
+        <div class="cal-cell cal-item"><strong>Consideration campaign</strong>"Why we only do private cremation" Reel</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell week">Week 3</div>
+        <div class="cal-cell cal-item"><strong>Rainbow Bridge tribute post</strong>First community tribute — invite submissions</div>
+        <div class="cal-cell cal-item"><strong>Urn &amp; keepsake showcase</strong>Styled product Reel from media day</div>
+        <div class="cal-cell cal-item"><strong>Retargeting campaign</strong>Warm creative targeting site visitors</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell week">Week 4</div>
+        <div class="cal-cell cal-item"><strong>Blog: "What to do in the first 24 hours"</strong>Share as carousel extract across social</div>
+        <div class="cal-cell cal-item"><strong>Owner / founder Reel</strong>"Why Cornerstone exists" — unscripted, honest</div>
+        <div class="cal-cell cal-item"><strong>Vet pipeline campaign</strong>B2B targeting Tasmanian vet professionals</div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <p class="section-label">Summary</p>
+    <h2>Strategic summary</h2>
+    <p>The single most powerful thing Cornerstone can do right now is become the most visible, most trusted, most human pet cremation brand in Tasmania — before anyone else tries. The content strategy above does that through three angles: education that answers real fears, community that creates belonging, and local identity that no interstate competitor can fake.</p>
+    <p>The private-only cremation model is the product story. The tracking system is the proof. The Tasmanian roots are the connection. Every piece of content in this strategy is designed to make those three things undeniable.</p>
+    <p style="margin-top: 1.5rem; font-size: 13px; color: var(--stone-light);">Prepared by Broad Collective for Cornerstone Pet Crematorium, Launceston Tasmania. Strategy document — April 2026. For questions or to arrange the media day brief, contact Broad Collective directly.</p>
+  </section>
+
+</main>
+
+<footer>
+  <span class="footer-brand">Cornerstone Pet Crematorium</span>
+  Content &amp; Campaign Strategy — Prepared by Broad Collective, Launceston TAS
+</footer>
+
+</body>
+</html>
