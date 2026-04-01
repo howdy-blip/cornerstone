@@ -33,6 +33,66 @@
     line-height: 1.7;
   }
 
+  /* EDIT TOOLBAR */
+  #edit-toolbar {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 999;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .edit-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .edit-btn:hover { opacity: 0.85; }
+
+  #btn-toggle {
+    background: var(--stone);
+    color: var(--sand-light);
+  }
+
+  #btn-toggle.active {
+    background: var(--sage);
+    color: #fff;
+  }
+
+  #btn-download {
+    background: var(--rust);
+    color: #fff;
+    display: none;
+  }
+
+  /* Edit mode styles */
+  body.edit-mode [contenteditable] {
+    outline: 2px dashed var(--sage);
+    outline-offset: 2px;
+    border-radius: 3px;
+    cursor: text;
+  }
+
+  body.edit-mode [contenteditable]:focus {
+    outline: 2px solid var(--sage);
+    background: rgba(122,144,128,0.06);
+  }
+
+  body.edit-mode [contenteditable]:empty::before {
+    content: 'Type here…';
+    color: var(--stone-light);
+    font-style: italic;
+  }
+
   /* NAV */
   nav {
     position: sticky;
@@ -1250,6 +1310,68 @@
   <span class="footer-brand">Cornerstone Pet Crematorium</span>
   Content &amp; Campaign Strategy — Prepared by Broad Collective, Launceston TAS
 </footer>
+
+
+<div id="edit-toolbar">
+  <button class="edit-btn" id="btn-download">Download</button>
+  <button class="edit-btn" id="btn-toggle">Edit page</button>
+</div>
+
+<script>
+  const EDITABLE_SELECTORS = [
+    'h1', 'h2', 'h3', 'h4', 'p', 'li', 'td', 'th',
+    '.tag', '.badge', '.tone-word', '.pillar-title',
+    '.pillar-number', '.hero-sub', '.brand', 'nav a',
+    '.ad-type', '.ad-spec', '.qa-q', '.qa-a',
+    '.counter-label', '.pain-icon', '.section-label',
+    '.hero-tag', '.hero-meta-item .label', '.hero-meta-item .value',
+    '.cal-cell', '.pillar-desc', '.shot-list li'
+  ];
+
+  const toggleBtn = document.getElementById('btn-toggle');
+  const downloadBtn = document.getElementById('btn-download');
+  let editMode = false;
+  let editableEls = [];
+
+  toggleBtn.addEventListener('click', () => {
+    editMode = !editMode;
+    document.body.classList.toggle('edit-mode', editMode);
+    toggleBtn.textContent = editMode ? 'Done editing' : 'Edit page';
+    toggleBtn.classList.toggle('active', editMode);
+    downloadBtn.style.display = editMode ? 'inline-block' : 'none';
+
+    if (editMode) {
+      editableEls = Array.from(document.querySelectorAll(EDITABLE_SELECTORS.join(',')))
+        .filter(el => !el.closest('#edit-toolbar'));
+      editableEls.forEach(el => el.setAttribute('contenteditable', 'true'));
+    } else {
+      editableEls.forEach(el => el.removeAttribute('contenteditable'));
+      editableEls = [];
+    }
+  });
+
+  downloadBtn.addEventListener('click', () => {
+    // Temporarily remove toolbar and edit attributes for clean export
+    const toolbar = document.getElementById('edit-toolbar');
+    toolbar.style.display = 'none';
+    editableEls.forEach(el => el.removeAttribute('contenteditable'));
+    document.body.classList.remove('edit-mode');
+
+    const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+
+    // Restore
+    toolbar.style.display = '';
+    editableEls.forEach(el => el.setAttribute('contenteditable', 'true'));
+    document.body.classList.add('edit-mode');
+
+    const blob = new Blob([html], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'cornerstone-content-strategy.html';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+</script>
 
 </body>
 </html>
