@@ -682,9 +682,117 @@
     .intro-block { grid-template-columns: 1fr; }
     .cal-row { grid-template-columns: 60px 1fr 1fr; }
   }
+
+  /* EDIT FAB */
+  #edit-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 50px;
+    height: 50px;
+    background: var(--stone);
+    color: var(--sand-light);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(61,57,53,.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998;
+    transition: transform .18s, box-shadow .18s;
+  }
+  #edit-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(61,57,53,.5); }
+
+  /* EDIT TOOLBAR */
+  #edit-toolbar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: var(--stone);
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding: 12px 24px;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .edit-toolbar-info {
+    flex: 1;
+    font-size: 13px;
+    color: var(--stone-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 180px;
+  }
+  .edit-pulse {
+    width: 8px;
+    height: 8px;
+    background: var(--sage);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 1.5s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .5; transform: scale(.8); }
+  }
+  .edit-toolbar-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 7px 16px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(255,255,255,.08);
+    color: var(--sand-light);
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .edit-toolbar-btn:hover { background: rgba(255,255,255,.16); }
+  .edit-toolbar-btn.primary {
+    background: var(--sage);
+    border-color: var(--sage);
+    color: #fff;
+  }
+  .edit-toolbar-btn.primary:hover { background: #6a8070; }
+  .edit-toolbar-btn.danger { border-color: rgba(156,90,60,.5); color: #d4846a; }
+  .edit-toolbar-btn.danger:hover { background: rgba(156,90,60,.15); }
+
+  /* EDITABLE HIGHLIGHT */
+  body.edit-mode [contenteditable="true"] {
+    outline: 1px dashed rgba(122,144,128,.5);
+    border-radius: 2px;
+    cursor: text;
+  }
+  body.edit-mode [contenteditable="true"]:focus {
+    outline: 2px solid var(--sage);
+    background: rgba(122,144,128,.05);
+  }
 </style>
 </head>
 <body>
+
+<button id="edit-fab" title="Edit Page" onclick="promptEdit()">
+  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
+  </svg>
+</button>
+
+<div id="edit-toolbar">
+  <div class="edit-toolbar-info">
+    <span class="edit-pulse"></span>
+    Edit mode active — click any text to edit
+  </div>
+  <button class="edit-toolbar-btn primary" onclick="saveToGitHub()">Save Live</button>
+  <button class="edit-toolbar-btn" onclick="downloadPage()">Download</button>
+  <button class="edit-toolbar-btn danger" onclick="exitEditMode()">Exit</button>
+</div>
 
 <nav>
   <span class="brand">Cornerstone Pet Crematorium — Strategy</span>
@@ -1251,5 +1359,154 @@
   Content &amp; Campaign Strategy — Prepared by Broad Collective, Launceston TAS
 </footer>
 
+<script>
+  var EDIT_SELECTORS = [
+    'h1', 'h2', 'h3', 'h4',
+    '.hero-tag', '.hero-sub', '.hero-meta-item .value',
+    'main p', 'footer p',
+    '.pain-card p', '.pain-card .pain-icon', '.pain-card .pain-counter',
+    '.counter-block p', '.counter-block .counter-label',
+    '.pillar-title', '.pillar-body .pillar-desc', '.tag',
+    '.content-table tbody td',
+    '.qa-q', '.qa-a',
+    '.shot-list li',
+    '.tone-word', '.tone-card p',
+    '.ad-card p', '.ad-card h4', '.ad-card .ad-type', '.ad-card .ad-spec',
+    '.cal-item strong', '.cal-item',
+    '.competitor-callout p', '.competitor-callout ul li',
+    '.footer-brand'
+  ];
+
+  function promptEdit() {
+    var pw = window.prompt('Enter edit password:');
+    if (pw === null) return;
+    if (pw === 'Cornerstone2026!') {
+      enterEditMode();
+    } else {
+      window.alert('Incorrect password.');
+    }
+  }
+
+  function enterEditMode() {
+    document.body.classList.add('edit-mode');
+    EDIT_SELECTORS.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) {
+        el.contentEditable = 'true';
+        el.spellcheck = true;
+      });
+    });
+    document.getElementById('edit-toolbar').style.display = 'flex';
+    document.getElementById('edit-fab').style.display = 'none';
+  }
+
+  function exitEditMode() {
+    document.body.classList.remove('edit-mode');
+    EDIT_SELECTORS.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) {
+        el.contentEditable = 'false';
+      });
+    });
+    document.getElementById('edit-toolbar').style.display = 'none';
+    document.getElementById('edit-fab').style.display = 'flex';
+  }
+
+  function buildCleanHtml() {
+    var clone = document.documentElement.cloneNode(true);
+    clone.querySelector('body').classList.remove('edit-mode');
+    clone.querySelectorAll('[contenteditable]').forEach(function(el) {
+      el.removeAttribute('contenteditable');
+      el.removeAttribute('spellcheck');
+    });
+    var toolbar = clone.querySelector('#edit-toolbar');
+    if (toolbar) toolbar.style.display = 'none';
+    var fab = clone.querySelector('#edit-fab');
+    if (fab) fab.style.display = '';
+    return '<!DOCTYPE html>\n' + clone.outerHTML;
+  }
+
+  function setToolbarStatus(msg, isError) {
+    var info = document.querySelector('.edit-toolbar-info');
+    info.innerHTML = '<span class="edit-pulse"></span>' + msg;
+    info.style.color = isError ? '#d4846a' : '';
+  }
+
+  async function saveToGitHub() {
+    var REPO = 'howdy-blip/cornerstone';
+    var FILE = 'index.html';
+    var BRANCH = 'main';
+    var API = 'https://api.github.com/repos/' + REPO + '/contents/' + FILE;
+
+    var token = localStorage.getItem('gh_cornerstone_token');
+    if (!token) {
+      token = window.prompt(
+        'Enter your GitHub Personal Access Token (repo write access).\nIt will be saved in your browser for future saves:'
+      );
+      if (!token) return;
+      localStorage.setItem('gh_cornerstone_token', token.trim());
+      token = token.trim();
+    }
+
+    setToolbarStatus('Saving&hellip;', false);
+
+    try {
+      var getResp = await fetch(API + '?ref=' + BRANCH, {
+        headers: {
+          'Authorization': 'token ' + token,
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      });
+
+      if (getResp.status === 401) {
+        localStorage.removeItem('gh_cornerstone_token');
+        setToolbarStatus('Invalid token — cleared. Try again.', true);
+        return;
+      }
+      if (!getResp.ok) throw new Error('Could not read file (status ' + getResp.status + ')');
+
+      var fileData = await getResp.json();
+      var sha = fileData.sha;
+
+      var html = buildCleanHtml();
+      var encoded = btoa(unescape(encodeURIComponent(html)));
+
+      var putResp = await fetch(API, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'token ' + token,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: 'Update page content via live editor',
+          content: encoded,
+          sha: sha,
+          branch: BRANCH
+        })
+      });
+
+      if (!putResp.ok) throw new Error('Save failed (status ' + putResp.status + ')');
+
+      setToolbarStatus('Saved! Site will update in ~1&ndash;2 min.', false);
+    } catch (err) {
+      setToolbarStatus('Error: ' + err.message, true);
+    }
+  }
+
+  function downloadPage() {
+    var html = buildCleanHtml();
+    var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'index.html';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function() {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 200);
+  }
+</script>
 </body>
 </html>
